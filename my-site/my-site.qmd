@@ -1,0 +1,286 @@
+---
+title: "Temp Page"
+format:
+  html:
+    css: styles.css
+---
+
+<style>
+/* ===== 탭 UI ===== */
+.tabs {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.tabs button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  margin: 0 15px;
+  cursor: pointer;
+  padding-bottom: 5px;
+}
+
+/* 현재 선택된 탭 표시 */
+.tabs button.active {
+  border-bottom: 2px solid black;
+}
+
+/* ===== 콘텐츠 영역 ===== */
+.tab-content {
+  display: none;   /* 기본적으로 숨김 */
+  max-width: 800px;
+  margin: auto;
+}
+
+/* ===== 헤더 ===== */
+.header {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* ===== Publications 스타일 ===== */
+.pub-item {
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* (1) 저널 이름 강조 */
+.journal {
+  font-style: italic;   /* 이탤릭 */
+  font-weight: 500;
+}
+
+/* (2) 논문 제목 강조 + 링크 */
+.title {
+  font-style: italic;
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+/* 제목 링크 스타일 */
+.title a {
+  text-decoration: none;
+  color: black;
+}
+
+/* 마우스 올리면 밑줄 */
+.title a:hover {
+  text-decoration: underline;
+}
+
+/* (3) 저자 이름 (폰트 크기 조절) */
+.authors {
+  font-size: 0.9em;   /* 작게 */
+  color: #555;
+  margin-top: 3px;
+}
+</style>
+
+<script>
+// 탭 전환 함수
+function showTab(tabId, el) {
+  let tabs = document.getElementsByClassName("tab-content");
+  let buttons = document.querySelectorAll(".tabs button");
+
+  // 모든 탭 숨김
+  for (let i = 0; i < tabs.length; i++) {
+    tabs[i].style.display = "none";
+  }
+
+  // 버튼 활성화 제거
+  buttons.forEach(b => b.classList.remove("active"));
+
+  // 선택한 탭만 표시
+  document.getElementById(tabId).style.display = "block";
+
+  // 선택된 버튼 강조
+  if (el) el.classList.add("active");
+}
+
+// 페이지 로드시 Home 탭 자동 표시
+window.onload = function() {
+  showTab('home', document.querySelector(".tabs button"));
+}
+</script>
+
+<!-- ===== 탭 메뉴 ===== -->
+<div class="tabs">
+  <button onclick="showTab('home', this)">Home</button>
+  <button onclick="showTab('research', this)">Research</button>
+  <button onclick="showTab('publications', this)">Publications</button>
+  <button onclick="showTab('news', this)">News</button>
+  <button onclick="showTab('links', this)">Links</button>
+</div>
+
+<!-- ===== HOME ===== -->
+<div id="home" class="tab-content">
+<div class="header">
+
+# Hyeongseob Kim
+
+Department of Physics, Ajou University  
+Quantum Many-Body   | Flat Band Systems   | Topological Phases
+
+[CV](#) | [Google Scholar](#) | [Email](mailto:your@email.com)
+
+</div>
+</div>
+
+<!-- ===== RESEARCH ===== -->
+<div id="research" class="tab-content">
+<div class="research-item">
+
+## Research
+
+<!-- 🔍 검색창 -->
+<input 
+  type="text" 
+  id="searchBox" 
+  placeholder="Search papers..." 
+  onkeyup="filterResearch()"
+  class="search-box"
+/>
+
+<!-- ❗ 검색 결과 없음 메시지 -->
+<div id="noResult" style="display:none; color:#888; margin-bottom:20px;">
+  No matching papers found.
+</div>
+
+<!-- 논문 리스트 -->
+<div class="research-item">
+
+  <!-- 제목 -->
+  <div class="research-title"><a href="https://arxiv.org/pdf/2603.24672">The theory of topological-topological flat bands</a>
+  </div>
+
+  <!-- 접기/펼치기 -->
+  <details class="research-details">
+    <summary>Show summary</summary>
+
+  <div class="research-desc">
+  temp
+  </div>
+
+  </details>
+
+</div>
+
+<div class="research-item">
+  <div class="research-title"><a href="#">Topological Phases</a>
+  </div>
+
+  <div class="research-desc">Investigation of topological invariants and edge states.
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- ===== PUBLICATIONS ===== -->
+<div id="publications" class="tab-content">
+
+## Publications
+
+<!-- ===== 2025 ===== -->
+<h2 class="year">2025</h2>
+
+<div class="pub-item">
+
+  <!-- (1) 저널 + 링크 -->
+  <div class="journal"><a href="https://journals.aps.org/prl/">Physical Review Letters</a>
+  </div>
+
+  <!-- (2) 논문 제목 -->
+  <div class="title"><a href="https://arxiv.org/abs/xxxx">Another Paper</a>
+  </div>
+
+  <!-- (3) 저자 -->
+  <div class="authors"><strong>Your Name</strong>, Coauthor
+  </div>
+
+</div>
+
+<!-- ===== 2023 ===== -->
+<h2 class="year">2023</h2>
+
+<div class="pub-item">
+
+  <div class="journal"><a href="https://www.nature.com/articles/s42005-023-01407-6">Communications Physics 6, 305 (2023)</a>
+  </div>
+
+  <div class="title">General construction scheme for geometrically nontrivial flat band models</a>
+  </div>
+
+  <div class="authors"><strong>Hyeongseop Kim*</strong>, Chang-geun Oh*, and Jun-Won Rhim†
+  </div>
+
+</div>
+
+<!-- ===== NEWS ===== -->
+<div id="news" class="tab-content">
+
+## News
+
+- 2026.03 — Paper accepted  
+- 2026.02 — Conference talk  
+
+</div>
+
+<!-- ===== LINKS ===== -->
+<div id="links" class="tab-content">
+
+## Links
+
+- [Google Scholar](#)
+- [GitHub](#)
+- [arXiv](https://arxiv.org)
+
+</div>
+
+<!-- ===== Search Box ===== -->
+<script>
+function filterResearch() {
+  const input = document.getElementById("searchBox").value.toLowerCase();
+  const items = document.querySelectorAll(".research-item");
+
+  let visibleCount = 0;
+
+  items.forEach(item => {
+    const title = item.querySelector(".research-title")?.innerText.toLowerCase() || "";
+    const desc = item.querySelector(".research-desc")?.innerText.toLowerCase() || "";
+
+    if (title.includes(input) || desc.includes(input)) {
+      item.style.display = "block";
+      visibleCount++;
+    } else {
+      item.style.display = "none";
+    }
+  });
+
+  // ❗ 결과 없으면 전체 복구
+  if (visibleCount === 0) {
+    items.forEach(item => item.style.display = "block");
+  }
+}
+</script>
+
+<!-- ===== Publication Numbers ===== -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const items = document.querySelectorAll(".pub-item");
+  const total = items.length;
+
+  items.forEach((item, index) => {
+    const journal = item.querySelector(".journal");
+
+    if (journal && !journal.textContent.includes("[")) {
+      const number = total - index;
+      journal.insertAdjacentText("afterbegin", "[" + number + "] ");
+    }
+  });
+});
+</script>
